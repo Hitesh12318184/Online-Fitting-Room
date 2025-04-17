@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Catalog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Sidebar styles */
+    .sidebar {
+      width: 250px;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .filter-group {
+      margin-bottom: 20px;
+    }
+    .filter-group strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .filter-group label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .filter-group input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .sidebar button {
+      background: #ff6b6b;
+      border: none;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    /* Catalog container styles */
+    .catalog-container {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .catalog-container h1 {
+      margin-top: 0;
+    }
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .item-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      transition: transform 0.2s ease;
+    }
+    .item-card:hover {
+      transform: translateY(-5px);
+    }
+    .item-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .product-info {
+      margin-top: 10px;
+    }
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .product-price {
+      color: #27ae60;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar with filters -->
+  <div class="sidebar">
+    <h2>Filters</h2>
+    <div class="filter-group">
+      <strong>Category</strong>
+      <label><input type="checkbox" class="filter-checkbox" data-filter="category" value="Shirt" /> Shirt</label>
+      <label><input type="checkbox" class="filter-checkbox" data-filter="category" value="Dress" /> Dress</label>
+    </div>
+    <div class="filter-group">
+      <strong>Size</strong>
+      <label><input type="checkbox" class="filter-checkbox" data-filter="size" value="S" /> S</label>
+      <label><input type="checkbox" class="filter-checkbox" data-filter="size" value="M" /> M</label>
+      <label><input type="checkbox" class="filter-checkbox" data-filter="size" value="L" /> L</label>
+    </div>
+    <div class="filter-group">
+      <strong>Fabric</strong>
+      <label><input type="checkbox" class="filter-checkbox" data-filter="fabric" value="Cotton" /> Cotton</label>
+      <label><input type="checkbox" class="filter-checkbox" data-filter="fabric" value="Polyester" /> Polyester</label>
+    </div>
+    <button onclick="clearFilters()">Clear Filters</button>
+  </div>
+
+  <!-- Catalog container -->
+  <div class="catalog-container">
+    <h1>Product Catalog</h1>
+    <div class="items-grid" id="itemsGrid">
+      <!-- Product 1: Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="M" data-fabric="Cotton">
+        <img src="leather jacaket.jpg" alt="Modern Cotton Shirt" />
+        <div class="product-info">
+          <div class="product-name">Modern Cotton Shirt</div>
+          <div class="product-price">$29.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="shirt2.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="shirt3.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="shirt4.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="sum er formal.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="shirt4.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="women1.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="women2.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="women3.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="women4.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="women5.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="women6.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="kid7.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="kid5.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="kid4.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+      <!-- Product 2: Another Shirt -->
+      <div class="item-card" data-category="Shirt" data-size="L" data-fabric="Polyester">
+        <img src="kid2.jpg" alt="Casual Polyester Shirt" />
+        <div class="product-info">
+          <div class="product-name">Casual Polyester Shirt</div>
+          <div class="product-price">$24.99</div>
+        </div>
+      </div>
+
+      <!-- Product 3: Dress -->
+      <div class="item-card" data-category="Dress" data-size="S" data-fabric="Cotton">
+        <img src="kid1.jpg" alt="Floral Cotton Dress" />
+        <div class="product-info">
+          <div class="product-name">Floral Cotton Dress</div>
+          <div class="product-price">$39.99</div>
+        </div>
+      </div>
+      <!-- Product 4: Another Dress -->
+      <div class="item-card" data-category="Dress" data-size="M" data-fabric="Polyester">
+        <img src="paint 2.avif" alt="Elegant Polyester Dress" />
+        <div class="product-info">
+          <div class="product-name">Elegant Polyester Dress</div>
+          <div class="product-price">$44.99</div>
+        </div>
+      </div>
+      <!-- Add more products as needed -->
+    </div>
+  </div>
+
+  <script>
+    // Add event listener to each filter checkbox.
+    const filters = document.querySelectorAll('.filter-checkbox');
+    filters.forEach(checkbox => {
+      checkbox.addEventListener('change', filterProducts);
+    });
+
+    function filterProducts() {
+      // Prepare an object for selected filter values.
+      const filterValues = { category: [], size: [], fabric: [] };
+
+      // Populate the object based on checked checkboxes.
+      filters.forEach(checkbox => {
+        if (checkbox.checked) {
+          const filterType = checkbox.getAttribute('data-filter');
+          filterValues[filterType].push(checkbox.value);
+        }
+      });
+
+      // Apply the filters to each product.
+      const products = document.querySelectorAll('.item-card');
+      products.forEach(product => {
+        let isVisible = true;
+        // Loop for each filter category.
+        for (let filterType in filterValues) {
+          if (filterValues[filterType].length > 0) {
+            const productValue = product.getAttribute(`data-${filterType}`);
+            // If product value doesn't match any selected value, hide it.
+            if (!filterValues[filterType].includes(productValue)) {
+              isVisible = false;
+              break;
+            }
+          }
+        }
+        product.style.display = isVisible ? 'block' : 'none';
+      });
+    }
+
+    // Clear all filters.
+    function clearFilters() {
+      filters.forEach(checkbox => checkbox.checked = false);
+      filterProducts();
+    }
+  </script>
+</body>
+</html>

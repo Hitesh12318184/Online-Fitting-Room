@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Virtual Fitting Room | Try Before You Buy</title>
+  <meta name="description" content="Learn about our innovative Virtual Fitting Room technology and the team behind it. Revolutionizing online fashion shopping with AR and AI.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <style>
+    :root {
+      --primary: #00bcd4;
+      --secondary: #0097a7;
+      --accent: #ff4081;
+      --dark: #111;
+      --light: #f9f9f9;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--dark), #1a1a1a);
+      color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: var(--primary);
+    }
+
+    .section-title {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .about-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      transform: perspective(1000px) rotateY(10deg);
+      transition: 0.5s;
+      box-shadow: 20px 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .about-image:hover {
+      transform: perspective(1000px) rotateY(0deg);
+      box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .feature-box i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,188,212,0.2);
+    }
+
+    .team-section {
+      margin-top: 4rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-member::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(0,188,212,0.1), transparent);
+      transform: rotate(45deg);
+      transition: all 0.5s;
+    }
+
+    .team-member:hover::before {
+      animation: shine 1.5s forwards;
+    }
+
+    @keyframes shine {
+      100% {
+        left: 150%;
+      }
+    }
+
+    .team-member-img {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--primary);
+      transition: 0.3s;
+    }
+
+    .team-member-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-member:hover .team-member-img {
+      transform: scale(1.05);
+      border-color: var(--accent);
+    }
+
+    .social-links {
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      margin: 0 0.25rem;
+      color: var(--dark);
+      font-size: 1.2rem;
+      display: inline-block;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .social-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .social-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-content {
+        flex-direction: column;
+      }
+      .about-image {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Virtual Fitting Room</h1>
+      <nav>
+        <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="fitting-room.html">Fitting Room</a></li>
+          <li><a href="catalog.html">Catalog</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="about-container">
+    <section class="section-title">
+      <h2>About Our Virtual Fitting Room</h2>
+      <p>Revolutionizing the way you shop for clothes online</p>
+    </section>
+
+    <div class="about-content">
+      <div class="about-text">
+        <p>Welcome to Virtual Fitting Room, where fashion meets technology to create a seamless online shopping experience. Our innovative platform combines augmented reality, computer vision, and machine learning to bring you the most accurate virtual try-on solution available.</p>
+        <p>Founded in 2020, we've been on a mission to eliminate the guesswork from online clothing purchases. With our technology, you can see how clothes will look on your body before you buy, reducing returns and increasing customer satisfaction.</p>
+        <p>Our team of fashion experts and tech innovators work tirelessly to ensure our virtual fitting experience is as close to the real thing as possible. We partner with top clothing brands to bring you the most accurate representations of their products.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Virtual Fitting Room in action">
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <i class="fas fa-magic"></i>
+        <h3>AR Technology</h3>
+        <p>State-of-the-art augmented reality for realistic try-ons</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-tshirt"></i>
+        <h3>10,000+ Items</h3>
+        <p>Massive catalog from top fashion brands</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-user-cog"></i>
+        <h3>Smart Fit</h3>
+        <p>AI-powered recommendations based on your body and preferences</p>
+      </div>
+    </div>
+
+    <section class="team-section">
+      <div class="section-title">
+        <h2>Meet the Team</h2>
+        <p>Our passionate innovators behind the virtual fitting revolution</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="team-member-img">
+            <img src="3.jpg" alt="Prince Yadav">
+          </div>
+          <h3>PRINCE YADAV</h3>
+          <p>CEO & Founder</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/prince.yadav______?igsh=MTczbmZycnFkYnY3YQ=="><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/PrinceYada62215?t=A53z77ZNJbMDcMJyy4LOoA&s=09"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="team-member-img">
+            <img src="harshit.jpg" alt="Hitesh">
+          </div>
+          <h3>HITESH</h3>
+          <p>Chief Technology Officer</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/share/1B96CWWtxV/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/theunilifes?igsh=MWN1b2w4Nnh0M2JlaQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="team-member-img">
+            <img src="hitesh.jpg" alt="Harshit">
+          </div>
+          <h3>HARSHIT</h3>
+          <p>Head of UX & Design</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/harshit-kumar1122/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/prince.yadav______?igsh=MTczbmZycnFkYnY3YQ=="><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+    });
+  </script>
+</body>
+</html>
